@@ -39,7 +39,7 @@
                     &trans &sl SYSTEM
                               >;
           label = "Lower";
-      }
+      };
 
       system_layer {
         // -------------------------
@@ -53,7 +53,7 @@
                     &trans &none
                               >;
           label = "System";
-      }
+      };
 
     };
 };
