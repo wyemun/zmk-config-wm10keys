@@ -20,7 +20,7 @@
         // | SFT |  A  |  S  |  D  |
         //             | LWR | SPC |
         bindings = <
-          &kp TAB &mt Q F &kp W &mt E R
+          &kp TAB &mt F Q &kp W &mt R E
           &kp LSHFT &kp A &kp S &kp D
                     &mo LOWER &kp SPACE
                               >;
@@ -30,12 +30,12 @@
       lower_layer {
         // -------------------------
         // | ESC |  1  |  2  |  3  |
-        // | CTRL|  4  |  5  | V/B  |
+        // | CTRL|  4  |  5  | C/V |
         //             | trn | SPC |
 
         bindings = <
           &kp ESC &kp N1 &kp N2 &kp N3
-          &kp LCTRL &kp N4 &kp N5 &mt V B
+          &kp LCTRL &kp N4 &kp N5 &mt V C
                     &trans &sl SYSTEM
                               >;
           label = "Lower";
@@ -44,7 +44,7 @@
       system_layer {
         // -------------------------
         // | BT1 | BT2 | BT3 | BT4 |
-        // | BTC |  -  |  -  |  -  |
+        // | BTC |  -  |  Z  |  X  |
         //             | trn |  -  |
 
         bindings = <
