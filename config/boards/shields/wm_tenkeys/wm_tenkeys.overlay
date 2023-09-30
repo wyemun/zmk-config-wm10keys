@@ -31,10 +31,10 @@
 			;
 		
 		col-gpios
-			= <&xiao_d 10 GPIO_ACTIVE_HIGH>   //Col0
-			, <&xiao_d 7 GPIO_ACTIVE_HIGH>   //Col1
-			, <&xiao_d 2 GPIO_ACTIVE_HIGH>   //Col2
-			, <&xiao_d 0 GPIO_ACTIVE_HIGH>   //Col3
+			= <&xiao_d 0 GPIO_ACTIVE_HIGH>   //Col0
+			, <&xiao_d 2 GPIO_ACTIVE_HIGH>   //Col1
+			, <&xiao_d 7 GPIO_ACTIVE_HIGH>   //Col2
+			, <&xiao_d 10 GPIO_ACTIVE_HIGH>   //Col3
 		;
 	};
 };
