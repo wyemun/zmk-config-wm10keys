@@ -2,23 +2,58 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
+#define DEFAULT 0
+#define LOWER   1
+#define SYSTEM  2
+
+&sl {
+    release-after-ms = <2000>;
+};
 
 / {
     keymap {
       compatible = "zmk,keymap";
 
       default_layer {
-// -----------------------------------------------------------------------------------------
-// | ESC |  Q  |  W  |  E  |
-// | SHFT|  A  |  S  |  D  |
-//             | GUI | SPC |
+        // -------------------------
+        // | TAB | Q/F |  W  | E/R |
+        // | SFT |  A  |  S  |  D  |
+        //             | LWR | SPC |
         bindings = <
-          &kp ESC &kp Q &kp W &kp E
+          &kp TAB &mt Q F &kp W &mt E R
           &kp LSHFT &kp A &kp S &kp D
-                    &kp LGUI &kp SPACE
+                    &mo LOWER &kp SPACE
                               >;
           label = "BASE";
       };
+
+      lower_layer {
+        // -------------------------
+        // | ESC |  1  |  2  |  3  |
+        // | CTRL|  4  |  5  | V/B  |
+        //             | trn | SPC |
+
+        bindings = <
+          &kp ESC &kp N1 &kp N2 &kp N3
+          &kp LCTRL &kp N4 &kp N5 &mt V B
+                    &trans &sl SYSTEM
+                              >;
+          label = "Lower";
+      }
+
+      system_layer {
+        // -------------------------
+        // | BT1 | BT2 | BT3 | BT4 |
+        // | BTC |  -  |  -  |  -  |
+        //             | trn |  -  |
+
+        bindings = <
+          &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3
+          &bt BT_CLR &none &none &none
+                    &trans &none
+                              >;
+          label = "System";
+      }
 
     };
 };
