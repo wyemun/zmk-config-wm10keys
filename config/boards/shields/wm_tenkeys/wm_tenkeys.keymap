@@ -8,7 +8,7 @@
 #define SYSTEM  2
 
 &sl {
-    release-after-ms = <1000>;
+    release-after-ms = <1500>;
 };
 
 / {
@@ -40,12 +40,12 @@
 
       default_layer {
         // -------------------------
-        // | F/TAB    | Q/G |  W  |  E  |
-        // | SHIFT/CTRL |  A  |  S  |  D  |
+        // | F/TAB   | Q/G |  W  |  E  |
+        // | SHIFT   |  A  |  S  |  D  |
         //                  | LWR | SPC |
         bindings = <
           &mt TAB F &mt G Q &kp W &kp E
-          &hm LCTRL LSHIFT &kp A &kp S &kp D
+          &kp LSHIFT &kp A &kp S &kp D
                       &mo LOWER &kp SPACE
                               >;
           label = "BASE";
@@ -54,12 +54,12 @@
       lower_layer {
         // -------------------------
         // | 1/ESC |  2/5  |  3     |  4/R  |
-        // | trans |  Z/T |  X/V   |  C/B  |
+        // | LCTRL |  Z/T |  X/V   |  C/B  |
         //                 | trans  | SYSTEM |
 
         bindings = <
           &mt ESC N1 &mt N5 N2 &kp N3 &mt R N4
-          &trans &mt T Z &mt V X &mt B C
+          &kp LCTRL &mt T Z &mt V X &mt B C
                     &trans &sl SYSTEM
                               >;
           label = "LOWER";
