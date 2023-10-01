@@ -12,49 +12,78 @@
 };
 
 / {
+    behaviors {
+        holdbt: hold_bt {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HBT";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <500>;
+            quick-tap-ms = <200>;
+            bindings = <&bt>, <&none>;
+            hold-trigger-key-positions = <1>;
+        };
+    };
+};
+
+/ {
     keymap {
       compatible = "zmk,keymap";
 
       default_layer {
         // -------------------------
-        // | TAB | Q/F |  W  | E/R |
-        // | SFT |  A  |  S  |  D  |
-        //             | LWR | SPC |
+        // | F/TAB    | Q/G |  W  | E/R |
+        // | SFT/CTRL |  A  |  S  |  D  |
+        //                  | LWR | SPC |
         bindings = <
-          &kp TAB &mt F Q &kp W &mt R E
-          &kp LSHFT &kp A &kp S &kp D
-                    &mo LOWER &kp SPACE
+          &mt TAB F &mt G Q &kp W &mt R E
+          &mt LCTRL LSHFT &kp A &kp S &kp D
+                      &mo LOWER &kp SPACE
                               >;
           label = "BASE";
       };
 
       lower_layer {
         // -------------------------
-        // | ESC |  1  |  2  |  3  |
-        // | CTRL|  4  |  5  | C/V |
-        //             | trn | SPC |
+        // | 1/ESC |  2  |  3  |  4  |
+        // | trans |  Z  |  X  |  C  |
+        //               | trans | SPC |
 
         bindings = <
-          &kp ESC &kp N1 &kp N2 &kp N3
-          &kp LCTRL &kp N4 &kp N5 &mt V C
+          &mt ESC N1 &kp N2 &kp N3 &kp N4
+          &trans &kp Z &kp X &kp C
                     &trans &sl SYSTEM
                               >;
-          label = "Lower";
+          label = "LOWER";
       };
 
       system_layer {
         // -------------------------
-        // | BT1 | BT2 | BT3 | BT4 |
-        // | BTC |  -  |  Z  |  X  |
-        //             | trn |  -  |
+        // | BT1 | BT2 | BT3   | BT4 |
+        // | BTC |  -  |  -    |  -  |
+        //             | trans |  -  |
 
         bindings = <
           &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3
-          &bt BT_CLR &out OUT_TOG &kp Z &kp X
+          &holdbt BT_CLR &none &none &none
                     &trans &none
                               >;
-          label = "System";
+          label = "SYSTEM";
       };
+
+      // number_layer {
+      //   // -------------------------
+      //   // |  1  |  2  |  3  |  4  |
+      //   // |  5  |  6  |  7  |  8  |
+      //   //             |  9  |  0  |
+
+      //   bindings = <
+      //     &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3
+      //     &bt BT_CLR &none &kp Z &kp X
+      //               &trans &none
+      //                         >;
+      //     label = "Number";
+      // };
 
     };
 };
