@@ -8,7 +8,7 @@
 #define SYSTEM  2
 
 &sl {
-    release-after-ms = <2000>;
+    release-after-ms = <1000>;
 };
 
 / {
@@ -23,21 +23,29 @@
             bindings = <&bt>, <&none>;
             hold-trigger-key-positions = <1>;
         };
-    };
-};
 
-/ {
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+    };
+
     keymap {
       compatible = "zmk,keymap";
 
       default_layer {
         // -------------------------
         // | F/TAB    | Q/G |  W  |  E  |
-        // | T/CTRL |  A  |  S  |  D  |
+        // | SHIFT/CTRL |  A  |  S  |  D  |
         //                  | LWR | SPC |
         bindings = <
           &mt TAB F &mt G Q &kp W &kp E
-          &mt LCTRL T &kp A &kp S &kp D
+          &hm LCTRL LSHIFT &kp A &kp S &kp D
                       &mo LOWER &kp SPACE
                               >;
           label = "BASE";
@@ -46,12 +54,12 @@
       lower_layer {
         // -------------------------
         // | 1/ESC |  2/5  |  3     |  4/R  |
-        // | trans |  Z    |  X/V   |  C/B  |
+        // | trans |  Z/T |  X/V   |  C/B  |
         //                 | trans  | SYSTEM |
 
         bindings = <
           &mt ESC N1 &mt N5 N2 &kp N3 &mt R N4
-          &trans &kp Z &mt V X &mt B C
+          &trans &mt T Z &mt V X &mt B C
                     &trans &sl SYSTEM
                               >;
           label = "LOWER";
@@ -66,7 +74,7 @@
         bindings = <
           &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3
           &holdbt BT_CLR &none &none &none
-                    &trans &none
+                              &trans &none
                               >;
           label = "SYSTEM";
       };
