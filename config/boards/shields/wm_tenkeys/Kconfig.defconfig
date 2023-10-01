@@ -1,6 +1,9 @@
 if SHIELD_WM_TENKEYS
 
 config ZMK_KEYBOARD_NAME
-  default "WMTenKeys"
+    default "WMTenKeys"
+
+config ZMK_BLE
+    default y
 
 endif
