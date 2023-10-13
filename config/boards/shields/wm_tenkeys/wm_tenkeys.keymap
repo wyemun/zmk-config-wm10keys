@@ -40,7 +40,7 @@
 
       default_layer {
         bindings = <
-          &kp ESC    &kp N    &kp K_MUTE &kp UP
+          &kp K_BACK &kp N    &kp K_MUTE &kp UP
           &kp ENTER  &kp LEFT &kp RIGHT  &kp DOWN
                               &mo LOWER  &kp SPACE
                               >;
