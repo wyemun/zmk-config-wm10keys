@@ -31,7 +31,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp 1 &kp 0 &kp 0 &kp 6>;
+                = <&macro_tap &kp N1 &kp N0 &kp N0 &kp N6>;
         };
     };
 
@@ -49,8 +49,8 @@
 
       lower_layer {
         bindings = <
-          &kp K_LOCK &kp Y  &kp C_BRI_UP &kp K_VOL_UP
-          &passcode  &trans &kp C_BRI_DN &kp K_VOL_DN
+          &kp K_LOCK &kp Y      &kp C_BRI_UP &kp K_VOL_UP
+          &passcode  &kp C_PIP  &kp C_BRI_DN &kp K_VOL_DN
                             &trans       &sl SYSTEM
                               >;
           label = "LOWER";
