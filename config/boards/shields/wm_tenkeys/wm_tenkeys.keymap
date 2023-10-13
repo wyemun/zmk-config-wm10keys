@@ -8,7 +8,7 @@
 #define SYSTEM  2
 
 &sl {
-    release-after-ms = <1500>;
+    release-after-ms = <2000>;
 };
 
 / {
@@ -23,15 +23,15 @@
             bindings = <&bt>, <&none>;
             hold-trigger-key-positions = <1>;
         };
+    };
 
-        hm: homerow_mods {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            quick-tap-ms = <0>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
+    macros {
+        passcode: passcode {
+            label = "PCODE";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp 1 &kp 0 &kp 0 &kp 6>;
         };
     };
 
@@ -39,28 +39,19 @@
       compatible = "zmk,keymap";
 
       default_layer {
-        // -------------------------
-        // | F/TAB   | Q/G |  W  |  E  |
-        // | SHIFT   |  A  |  S  |  D  |
-        //                  | LWR | SPC |
         bindings = <
-          &mt TAB F &mt G Q &kp W &kp E
-          &kp LSHIFT &kp A &kp S &kp D
-                      &mo LOWER &kp SPACE
+          &kp ESC    &kp N    &kp K_MUTE &kp UP
+          &kp ENTER  &kp LEFT &kp RIGHT  &kp DOWN
+                              &mo LOWER  &kp SPACE
                               >;
           label = "BASE";
       };
 
       lower_layer {
-        // -------------------------
-        // | 1/ESC |  2/5  |  3     |  4/R  |
-        // | LCTRL |  Z/T |  X/V   |  C/B  |
-        //                 | trans  | SYSTEM |
-
         bindings = <
-          &mt ESC N1 &mt N5 N2 &kp N3 &mt R N4
-          &kp LCTRL &mt T Z &mt V X &mt B C
-                    &trans &sl SYSTEM
+          &kp K_LOCK &kp Y  &kp C_BRI_UP &kp K_VOL_UP
+          &passcode  &trans &kp C_BRI_DN &kp K_VOL_DN
+                            &trans       &sl SYSTEM
                               >;
           label = "LOWER";
       };
@@ -70,28 +61,13 @@
         // | BT1 | BT2 | BT3   | BT4 |
         // | BTC |  -  |  -    |  -  |
         //             | trans |  -  |
-
         bindings = <
-          &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3
-          &holdbt BT_CLR &none &none &none
-                              &trans &none
+          &bt BT_SEL 0   &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3
+          &holdbt BT_CLR &none        &none        &none
+                                      &trans       &none
                               >;
           label = "SYSTEM";
       };
-
-      // number_layer {
-      //   // -------------------------
-      //   // |  1  |  2  |  3  |  4  |
-      //   // |  5  |  6  |  7  |  8  |
-      //   //             |  9  |  0  |
-
-      //   bindings = <
-      //     &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3
-      //     &bt BT_CLR &none &kp Z &kp X
-      //               &trans &none
-      //                         >;
-      //     label = "Number";
-      // };
 
     };
 };
