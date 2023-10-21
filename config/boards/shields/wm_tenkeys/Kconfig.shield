@@ -1,2 +1,0 @@
-config SHIELD_WM_TENKEYS
-  def_bool $(shields_list_contains,wm_tenkeys)

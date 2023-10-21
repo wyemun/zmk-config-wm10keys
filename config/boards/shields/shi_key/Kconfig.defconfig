@@ -1,7 +1,7 @@
-if SHIELD_WM_TENKEYS
+if SHIELD_SHI_KEY
 
 config ZMK_KEYBOARD_NAME
-    default "WMTenKeys"
+    default "ShiKey"
 
 config ZMK_BLE
     default y

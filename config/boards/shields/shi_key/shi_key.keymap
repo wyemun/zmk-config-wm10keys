@@ -47,6 +47,7 @@
           &mt TAB F &mt G Q &kp W &kp E
           &kp LSHIFT &kp A &kp S &kp D
                       &mo LOWER &kp SPACE
+                                &kp O
                               >;
           label = "BASE";
       };
@@ -61,6 +62,7 @@
           &mt ESC N1 &mt N5 N2 &kp N3 &mt R N4
           &kp LCTRL &mt T Z &mt V X &mt B C
                     &trans &sl SYSTEM
+                              &none
                               >;
           label = "LOWER";
       };
@@ -75,6 +77,7 @@
           &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3
           &holdbt BT_CLR &none &none &none
                               &trans &none
+                                      &none
                               >;
           label = "SYSTEM";
       };
